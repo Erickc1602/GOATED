@@ -9,8 +9,10 @@ import { Link } from "react-router-dom";
 
 const Container = styled.div`
   height: 100px;
-
-  ${mobile({})}
+  @media only screen and (max-width: 380px) {
+  }
+  @media only screen and (max-width: 480px) {
+  }
 `;
 
 const Wrapper = styled.div`
@@ -18,7 +20,14 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  ${mobile({ padding: "10px 0px" })}
+  @media only screen and (max-width: 380px) {
+    padding: 10px 0px;
+    width: 100%;
+  }
+  @media only screen and (max-width: 480px) {
+    padding: 10px 0px;
+    width: 100%;
+  }
 `;
 
 const Left = styled.div`
@@ -39,6 +48,8 @@ const Right = styled.div`
   flex: 1;
   display: flex;
   ${mobile({ flex: 2, justifyContent: "center", marginLeft: "-225px" })}
+  @media only screen and (max-width: 400) {
+  }
 `;
 const MenuItem = styled.div`
   font-size: 14px;
@@ -48,6 +59,8 @@ const MenuItem = styled.div`
   justify-content: flex-end;
   margin-left: 25px;
   ${mobile({ fontSize: "12px", marginLeft: "10px" })}
+  @media only screen and (max-width: 380px) {
+  }
 `;
 
 const Button = styled.button`

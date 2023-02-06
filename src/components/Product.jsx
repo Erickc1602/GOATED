@@ -1,9 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
-import tshirt from "../images/Meu_projeto-1__1_-removebg-preview.png";
 import { Link } from "react-router-dom";
-import hoodie from "../images/Design_sem_nome-removebg-preview.png";
+import { publicRequest } from "../requestServer";
 
 const Info = styled.div`
   opacity: 0;
@@ -33,6 +32,8 @@ const Container = styled.div`
 
   &:hover ${Info} {
     opacity: 1;
+    @media only screen and (max-width: 480px) {
+    }
   }
 `;
 
@@ -42,6 +43,10 @@ const Image = styled.img`
   margin-left: auto;
   margin-right: auto;
   width: 55%;
+  object-fit: cover;
+  @media only screen and (max-width: 480px) {
+    object-fit: cover;
+  }
 `;
 
 const Icon = styled.div`
@@ -59,30 +64,38 @@ const Icon = styled.div`
     transform: scale(1.1);
   }
 `;
+const Div = styled.div``;
 
-const Product = ({ item }) => {
+const Product = () => {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    publicRequest
+      .get("/products/list/")
+      .then((res) => {
+        setProducts(res.data);
+      })
+      .catch((err) => {});
+  }, []);
+
   return (
     <>
-      <Container>
-        <Image src={tshirt} />
-        <Info>
-          <Icon>
-            <Link to={"/product/63d6c93de45d6e4ba774c357"}>
-              <SearchOutlinedIcon />{" "}
-            </Link>
-          </Icon>
-        </Info>
-      </Container>
-      <Container>
-        <Image src={hoodie} />
-        <Info>
-          <Icon>
-            <Link to={"/product/63d6c9bfe45d6e4ba774c359"}>
-              <SearchOutlinedIcon />{" "}
-            </Link>
-          </Icon>
-        </Info>
-      </Container>
+      {products.map((product) => (
+        <Container>
+          <Div>
+            <h1>{product.title}</h1>
+            <h2>${product.price}</h2>
+          </Div>
+          <Image src={product.img} />
+          <Info>
+            <Icon>
+              <Link to={`/product/${product._id}`}>
+                <SearchOutlinedIcon />{" "}
+              </Link>
+            </Icon>
+          </Info>
+        </Container>
+      ))}
     </>
   );
 };

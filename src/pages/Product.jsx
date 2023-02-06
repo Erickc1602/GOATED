@@ -23,6 +23,7 @@ const ImgContainer = styled.div`
 const Image = styled.img`
   width: 100%;
   height: 60vh;
+  object-fit: cover;
   background-color: #f8f8ff;
   ${mobile({ width: "100%", height: "50%" })}
 `;

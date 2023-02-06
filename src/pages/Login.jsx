@@ -58,19 +58,19 @@ const Button = styled.button`
   }
 `;
 
-const Error = styled.span`
-  color: red;
-`;
-
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
-  const { isFetching, error } = useSelector((state) => state.user);
+  const { isFetching } = useSelector((state) => state.user);
 
   const handleClick = (e) => {
     e.preventDefault();
     login(dispatch, { username, password });
+    try {
+    } catch (err) {
+      alert(err);
+    }
   };
 
   return (
@@ -93,7 +93,6 @@ const Login = () => {
             <Button onClick={handleClick} disabled={isFetching}>
               LOGIN
             </Button>
-            {error && <Error>Something went wrong...</Error>}
           </Form>
         </Wrapper>
       </Container>

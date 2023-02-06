@@ -3,7 +3,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import goat from "../images/Meu_projeto-1__1_-removebg-preview.png";
 import goatH from "../images/Design_sem_nome-removebg-preview.png";
-import { mobile } from "../responsive";
+
 import { Link } from "react-router-dom";
 
 const Container = styled.div`
@@ -13,7 +13,9 @@ const Container = styled.div`
   background-color: gray;
   position: relative;
   overflow: hidden;
-  ${mobile({ display: "none" })}
+  @media only screen and (max-width: 480px) {
+    display: none;
+  }
 `;
 
 const Arrow = styled.div`
