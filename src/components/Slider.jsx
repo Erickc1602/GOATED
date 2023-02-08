@@ -8,7 +8,8 @@ import { Link } from "react-router-dom";
 
 const Container = styled.div`
   width: 100%;
-  height: 100vh;
+  height: 500px;
+  margin-top: 25px;
   display: flex;
   background-color: gray;
   position: relative;
@@ -52,6 +53,7 @@ const Slide = styled.div`
 `;
 const ImgContainer = styled.div`
   flex: 1;
+  margin-top: -310px;
 `;
 
 const Image = styled.img`
@@ -61,6 +63,7 @@ const Image = styled.img`
 const InfoContainer = styled.div`
   flex: 1;
   padding: 50px;
+  margin-top: -310px;
 `;
 
 const Tittle = styled.h1`
@@ -84,7 +87,7 @@ const Slider = () => {
 
   const handleClick = (direction) => {
     if (direction === "left") {
-      setSlideIndex(slideIndex > 0 ? slideIndex - 1 : 2);
+      setSlideIndex(slideIndex > 0 ? slideIndex - 1 : 1);
     } else {
       setSlideIndex(slideIndex < 1 ? slideIndex + 1 : 0);
     }

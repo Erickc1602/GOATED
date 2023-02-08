@@ -76,6 +76,7 @@ const NavBar = () => {
   const logout = () => {
     localStorage.clear();
     refresh();
+    alert("logout Sucessfull");
   };
   return (
     <Container>
